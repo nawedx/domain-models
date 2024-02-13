@@ -1,14 +1,10 @@
 public class Library
 {
-    public List<Book> Books { get; private set; }
+    public List<Book> Books { get; private set; } = new();
 
-    public List<User> Users { get; private set; }
+    public List<User> Users { get; private set; } = new();
 
-    public Library()
-    {
-        Books = new List<Book>();
-        Users = new List<User>();
-    }
+    public List<Loan> Loans { get; private set; } = new();
 
     public string GenerateBookId()
     {
@@ -20,6 +16,12 @@ public class Library
     {
         var usersCount = Users.Count;
         return $"library-user-{usersCount + 1}";
+    }
+    
+    public string GenerateLoanId()
+    {
+        var loanCount = Loans.Count;
+        return $"library-loan-{loanCount + 1}";
     }
 
     // Add Books
