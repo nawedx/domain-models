@@ -118,4 +118,26 @@ public class Library
             book.Return();
         }
     }
+
+    public IEnumerable<Book> GetBooksIssuedToUser(string userId)
+    {
+        var user = Users.FirstOrDefault(u => u.Id == userId);
+        if (user == null)
+        {
+            Console.WriteLine("User doesn't exist in the system");
+            return Array.Empty<Book>();
+        }
+
+        return user.BorrowedBooks;
+    }
+
+    public IEnumerable<Book> GetAvailableBooks()
+    {
+        return Books.Where(b => b.Available);
+    }
+
+    public IEnumerable<Book> GetWrittenOffBooks()
+    {
+        return Books.Where(b => b.IsDeleted);
+    }
 }

@@ -149,4 +149,59 @@ public class LibraryTests
             library.IssueBooks(user3.Id, new [] { library.Books.Last().Id });
         });
     }
+
+    [Fact]
+    public void MustReturnIssuedBooksForUser()
+    {
+        var library = new Library();
+        library.SeedData();
+        var booksToBeIssuedToUser1 = new List<string>() { "library-book-1", "library-book-2" };
+        library.IssueBooks("library-user-1", booksToBeIssuedToUser1);
+
+        var actualIssuedBooksForUser1 = library.GetBooksIssuedToUser("library-user-1");
+
+        var expectedIssuedBooksForUser1 = library.Books.Where(b => booksToBeIssuedToUser1.Contains(b.Id));
+        Assert.Equal(expectedIssuedBooksForUser1, actualIssuedBooksForUser1);
+    }
+
+    [Fact]
+    public void MustReturnEmptyListOfBooksWhenUserNotFound()
+    {
+        var library = new Library();
+        library.SeedData();
+        var booksToBeIssuedToUser1 = new List<string>() { "library-book-1", "library-book-2" };
+        library.IssueBooks("library-user-1", booksToBeIssuedToUser1);
+        
+        var actualIssuedBooksForInvalidUser = library.GetBooksIssuedToUser("random-library-user");
+        
+        Assert.Empty(actualIssuedBooksForInvalidUser);
+        Assert.IsAssignableFrom<IEnumerable<Book>>(actualIssuedBooksForInvalidUser);
+    }
+
+    [Fact]
+    public void MustReturnAvailableBooks()
+    {
+        var library = new Library();
+        library.SeedData();
+        var booksToBeIssuedToUser1 = new List<string>() { "library-book-1", "library-book-2" };
+        library.IssueBooks("library-user-1", booksToBeIssuedToUser1);
+
+        var actualAvailableBooks = library.GetAvailableBooks();
+
+        var expectedAvailableBooks = library.Books.Where(b => b.Available);
+        Assert.Equal(expectedAvailableBooks, actualAvailableBooks);
+    }
+
+    [Fact]
+    public void MustReturnWrittenOffBooks()
+    {
+        var library = new Library();
+        library.SeedData();
+        library.WriteOffBook("library-book-1");
+
+        var acutalWrittenOffBooks = library.GetWrittenOffBooks();
+
+        var expectedWrittenOffBooks = library.Books.Where(b => b.IsDeleted);
+        Assert.Equal(expectedWrittenOffBooks, acutalWrittenOffBooks);
+    }
 }
