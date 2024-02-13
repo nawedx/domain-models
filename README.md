@@ -47,11 +47,11 @@ After starting the application, you can use the provided interface to interact w
 ### Contributing
 Contributions to improve the Library Management System are welcome. Please follow these steps to contribute:
 
-Fork the repository.
-Create your feature branch (git checkout -b feature/AmazingFeature).
-Commit your changes (git commit -am 'Add some AmazingFeature').
-Push to the branch (git push origin feature/AmazingFeature).
-Open a pull request.
+- Fork the repository.
+- Create your feature branch (git checkout -b feature/AmazingFeature).
+- Commit your changes (git commit -am 'Add some AmazingFeature').
+- Push to the branch (git push origin feature/AmazingFeature).
+- Open a pull request.
 
 ### License
 Distributed under the MIT License. See LICENSE for more information.
