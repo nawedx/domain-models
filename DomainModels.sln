@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "library-management", "library-management\library-management.csproj", "{2F85D4BC-C4F3-42F5-8AE3-C92191E53531}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "library-management", "LibraryManagement\library-management\library-management.csproj", "{2F85D4BC-C4F3-42F5-8AE3-C92191E53531}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryManagementTests", "LibraryManagementTests\LibraryManagementTests.csproj", "{780CB943-54D7-4025-A0F7-E583FBDBB537}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryManagementTests", "LibraryManagement\LibraryManagementTests\LibraryManagementTests.csproj", "{780CB943-54D7-4025-A0F7-E583FBDBB537}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
