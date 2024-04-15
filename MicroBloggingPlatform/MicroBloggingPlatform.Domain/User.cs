@@ -12,7 +12,7 @@ public record User
     
     public string ProfilePhotoUrl { get; private set; }
     
-    public IReadOnlyList<User> Followers { get; private set; }
+    public IReadOnlyList<User> Followings { get; private set; }
     
     public DateTime CreatedAt { get; private set; }
     
@@ -33,6 +33,7 @@ public record User
         Username = username;
         Bio = string.Empty;
         ProfilePhotoUrl = string.Empty;
+        Followings = new List<User>();
         CreatedAt = DateTime.UtcNow;
         UpdatedAt = DateTime.UtcNow;
         IsDeleted = false;
@@ -63,16 +64,16 @@ public record User
             throw new InvalidOperationException("Deleted user cannot follow someone");
         }
         
-        var existingFollower = Followers.FirstOrDefault(follower => follower.Id == user.Id);
-        if(existingFollower != null)
+        var existingFollowing = Followings.FirstOrDefault(followingUser => followingUser.Id == user.Id);
+        if(existingFollowing != null)
         {
             return;
         }
         
-        var updatedFollowers = Followers.ToList();
-        updatedFollowers.Add(user);
+        var updatedFollowings = Followings.ToList();
+        updatedFollowings.Add(user);
         
-        Followers = updatedFollowers;
+        Followings = updatedFollowings;
         UpdatedAt = DateTime.UtcNow;
     }
     
@@ -85,16 +86,16 @@ public record User
             throw new InvalidOperationException("Deleted user cannot unfollow someone");
         }
         
-        var existingFollower = Followers.FirstOrDefault(follower => follower.Id == user.Id);
-        if(existingFollower == null)
+        var existingFollowing = Followings.FirstOrDefault(followingUser => followingUser.Id == user.Id);
+        if(existingFollowing == null)
         {
             return;
         }
         
-        var updatedFollowers = Followers.ToList();
-        updatedFollowers.Remove(existingFollower);
+        var updatedFollowings = Followings.ToList();
+        updatedFollowings.Remove(existingFollowing);
         
-        Followers = updatedFollowers;
+        Followings = updatedFollowings;
         UpdatedAt = DateTime.UtcNow;
     }
     

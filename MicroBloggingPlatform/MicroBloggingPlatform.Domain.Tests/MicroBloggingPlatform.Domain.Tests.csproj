@@ -20,4 +20,8 @@
         <Using Include="Xunit"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\MicroBloggingPlatform.Domain\MicroBloggingPlatform.Domain.csproj" />
+    </ItemGroup>
+
 </Project>
