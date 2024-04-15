@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MicroBloggingPlatform", "Mi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroBloggingPlatform.Domain", "MicroBloggingPlatform\MicroBloggingPlatform.Domain\MicroBloggingPlatform.Domain.csproj", "{6E278FFB-B11B-41BE-8D9F-001612AADDFC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroBloggingPlatform.Domain.Tests", "MicroBloggingPlatform\MicroBloggingPlatform.Domain.Tests\MicroBloggingPlatform.Domain.Tests.csproj", "{9368FDBE-8F02-4AA6-A4C7-05937EE79215}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,10 +30,15 @@ Global
 		{6E278FFB-B11B-41BE-8D9F-001612AADDFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E278FFB-B11B-41BE-8D9F-001612AADDFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E278FFB-B11B-41BE-8D9F-001612AADDFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9368FDBE-8F02-4AA6-A4C7-05937EE79215}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9368FDBE-8F02-4AA6-A4C7-05937EE79215}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9368FDBE-8F02-4AA6-A4C7-05937EE79215}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9368FDBE-8F02-4AA6-A4C7-05937EE79215}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2F85D4BC-C4F3-42F5-8AE3-C92191E53531} = {1333AC9B-10E9-4929-92DC-0C2D8FDA45AA}
 		{780CB943-54D7-4025-A0F7-E583FBDBB537} = {1333AC9B-10E9-4929-92DC-0C2D8FDA45AA}
 		{6E278FFB-B11B-41BE-8D9F-001612AADDFC} = {0D9195E3-508E-427B-A904-75EB402AA335}
+		{9368FDBE-8F02-4AA6-A4C7-05937EE79215} = {0D9195E3-508E-427B-A904-75EB402AA335}
 	EndGlobalSection
 EndGlobal
