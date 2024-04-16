@@ -22,45 +22,43 @@ public class UserTests
     }
 
     [Fact]
-    public void MustAddFollowing()
+    public void MustFollowSomeone()
     {
         // Arrange
-        var user = new User("user-1", new PersonName("User", null, "One"), "user.one@yolo.com", "userone");
-        user.UpdateProfilePhoto("userone-photo.jpg");
-        user.UpdateBio("You only live once");
+        var user1 = new User("user-1", new PersonName("User", null, "One"), "user.one@yolo.com", "userone");
+        user1.UpdateProfilePhoto("userone-photo.jpg");
+        user1.UpdateBio("You only live once");
         
-        var followingUser = new User("following-1", new PersonName("Following", null, "One"), "following.one@yolo.com", 
-            "followingone");
-        followingUser.UpdateProfilePhoto("followingone-photo.jpg");
-        followingUser.UpdateBio("You live to get followed");
+        var user2 = new User("user-2", new PersonName("User", null, "Two"), "user.two@yolo.com", "usertwo");
+        user2.UpdateProfilePhoto("usertwo-photo.jpg");
+        user2.UpdateBio("You only live twice");
         
         // Act
-        user.Follow(followingUser);
+        user1.Follow(user2);
         
         // Assert
-        Assert.Single(user.Followings);
-        Assert.Equal("following-1", user.Followings.First().Id);
+        Assert.Single(user1.Followings);
+        Assert.Equal("user-2", user1.Followings.First().Id);
     }
 
     [Fact]
     public void MustRemoveFollowing()
     {
         // Arrange
-        var user = new User("user-1", new PersonName("User", null, "One"), "user.one@yolo.com", "userone");
-        user.UpdateProfilePhoto("userone-photo.jpg");
-        user.UpdateBio("You only live once");
+        var user1 = new User("user-1", new PersonName("User", null, "One"), "user.one@yolo.com", "userone");
+        user1.UpdateProfilePhoto("userone-photo.jpg");
+        user1.UpdateBio("You only live once");
         
-        var followingUser = new User("following-1", new PersonName("Following", null, "One"), "following.one@yolo.com", 
-            "followingone");
-        followingUser.UpdateProfilePhoto("followingone-photo.jpg");
-        followingUser.UpdateBio("You live to get followed");
+        var user2 = new User("user-2", new PersonName("User", null, "Two"), "user.two@yolo.com", "usertwo");
+        user2.UpdateProfilePhoto("usertwo-photo.jpg");
+        user2.UpdateBio("You only live twice");
         
-        user.Follow(followingUser);
+        user1.Follow(user2);
 
         // Act
-        user.Unfollow(followingUser);
+        user1.Unfollow(user2);
         
         // Assert
-        Assert.Empty(user.Followings);
+        Assert.Empty(user1.Followings);
     }
 }
