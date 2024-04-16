@@ -18,11 +18,11 @@ public class Post
     
     public DateTime UpdatedAt { get; private set; }
 
-    public Post(string id, string userId)
+    public Post(string id, string userId, IReadOnlyList<string> photoStorageUrls)
     {
         Id = id;
         UserId = userId;
-        PhotoStorageUrls = new List<string>();
+        PhotoStorageUrls = photoStorageUrls.Any() ? photoStorageUrls : throw new ArgumentException("At least one photo is required");
         Likes = new List<Like>();
         Comments = new List<Comment>();
         Views = new List<View>();
