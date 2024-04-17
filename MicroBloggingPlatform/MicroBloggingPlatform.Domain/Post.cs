@@ -6,6 +6,8 @@ public class Post
 
     public IReadOnlyList<string> PhotoStorageUrls { get; private set; }
     
+    public string Caption { get; private set; }
+    
     public IReadOnlyList<Like> Likes { get; private set; }
     
     public IReadOnlyList<Comment> Comments { get; private set; }
@@ -18,11 +20,12 @@ public class Post
     
     public DateTime UpdatedAt { get; private set; }
 
-    public Post(string id, string userId, IReadOnlyList<string> photoStorageUrls)
+    public Post(string id, string userId, IReadOnlyList<string> photoStorageUrls, string caption)
     {
         Id = id;
         UserId = userId;
         PhotoStorageUrls = photoStorageUrls.Any() ? photoStorageUrls : throw new ArgumentException("At least one photo is required");
+        Caption = caption;
         Likes = new List<Like>();
         Comments = new List<Comment>();
         Views = new List<View>();
@@ -39,6 +42,14 @@ public class Post
         }
         
         PhotoStorageUrls = photoStorageUrls;
+        UpdatedAt = DateTime.UtcNow;
+    }
+    
+    public void UpdateCaption(string caption)
+    {
+        ArgumentNullException.ThrowIfNull(caption);
+        
+        Caption = caption;
         UpdatedAt = DateTime.UtcNow;
     }
     

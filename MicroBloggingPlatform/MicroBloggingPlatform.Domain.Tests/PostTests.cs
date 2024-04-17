@@ -12,12 +12,13 @@ public class PostTests
 
         // Act
         var postPhotos = new List<string> { "post-photo-1.jpg", "post-photo-2.jpg" };
-        var post = new Post("post-1", "user-1", postPhotos);
+        var post = new Post("post-1", "user-1", postPhotos, "Post Caption");
 
         // Assert
         Assert.Equal("post-1", post.Id);
         Assert.Equal("user-1", post.UserId);
         Assert.Equal(postPhotos, post.PhotoStorageUrls);
+        Assert.Equal("Post Caption", post.Caption);
         Assert.Empty(post.Likes);
         Assert.Empty(post.Comments);
         Assert.Empty(post.Views);
@@ -33,7 +34,7 @@ public class PostTests
         user1.UpdateBio("You only live once");
         
         var postPhotos = new List<string> { "post-photo-1.jpg", "post-photo-2.jpg" };
-        var post = new Post("post-1", "user-1", postPhotos);
+        var post = new Post("post-1", "user-1", postPhotos, "Post Caption");
 
         // Act
         var like = new Like("like-1", "post-1", "user-2");
@@ -41,5 +42,26 @@ public class PostTests
         
         // Assert
         Assert.Single(post.Likes);
+    }
+
+    [Fact]
+    public void MustUnlikeALikedPost()
+    {
+        // Arrange
+        var user1 = new User("user-1", new PersonName("User", null, "One"), "user.one@yolo.com", "userone");
+        user1.UpdateProfilePhoto("userone-photo.jpg");
+        user1.UpdateBio("You only live once");
+        
+        var postPhotos = new List<string> { "post-photo-1.jpg", "post-photo-2.jpg" };
+        var post = new Post("post-1", "user-1", postPhotos, "Post Caption");
+        
+        var like = new Like("like-1", "post-1", "user-2");
+        post.AddLike(like);
+        
+        // Act
+        post.RemoveLike(like.UserId);
+        
+        // Assert
+        Assert.Empty(post.Likes);
     }
 }
